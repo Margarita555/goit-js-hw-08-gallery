@@ -130,8 +130,8 @@ function onGalleryContainerClick(evt) {
     window.addEventListener('keydown', onEscKeyPress);
     backdrop.classList.add('is-open');
     const bigImageUrl = evt.target.dataset.source;
-    console.log(evt.target.dataset.source)
-    console.log(imageEl)
+    // console.log(evt.target.dataset.source)
+    // console.log(imageEl)
   imageEl.setAttribute("src", bigImageUrl)
   
  window.addEventListener('keydown', onRightKeyPress);
