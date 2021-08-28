@@ -1,31 +1,3 @@
-//  Создание и рендер разметки по массиву данных galleryItems из app.js и предоставленному шаблону.
-// Реализация делегирования на галерее ul.js-gallery и получение url большого изображения.
-// Открытие модального окна по клику на элементе галереи.
-// Подмена значения атрибута src элемента img.lightbox__image.
-// Закрытие модального окна по клику на кнопку button[data-action="close-lightbox"].
-// Очистка значения атрибута src элемента img.lightbox__image.Это необходимо для того, чтобы при следующем открытии модального окна, пока грузится изображение, мы не видели предыдущее.
-
-// Ссылка на оригинальное изображение должна храниться в data-атрибуте source на элементе img, и указываться в href ссылки (это необходимо для доступности).
-
-
-// Закрытие модального окна по клику на div.lightbox__overlay.
-// Закрытие модального окна по нажатию клавиши ESC.
-// Пролистывание изображений галереи в открытом модальном окне клавишами "влево" и "вправо".
-
-//     <li class="gallery__item">
-//   <a
-//     class="gallery__link"
-//     href="${original}"
-//   >
-//     <img
-//       class="gallery__image"
-//       src="${preview}"
-//       data-source="${original}"
-//       alt="${description}"
-//     />
-//   </a>
-// </li>
-
 const galleryItems = [
   {
     preview:
@@ -126,20 +98,15 @@ function onGalleryContainerClick(evt) {
   if (!evt.target.classList.contains('gallery__image')) {
     return;
     }
-    //    console.log(evt.target) 
     window.addEventListener('keydown', onEscKeyPress);
     backdrop.classList.add('is-open');
     const bigImageUrl = evt.target.dataset.source;
-    // console.log(evt.target.dataset.source)
-    // console.log(imageEl)
-  imageEl.setAttribute("src", bigImageUrl)
+    imageEl.setAttribute("src", bigImageUrl)
   
- window.addEventListener('keydown', onRightKeyPress);
- window.addEventListener('keydown', onLeftKeyPress); 
+    window.addEventListener('keydown', onRightKeyPress);
+    window.addEventListener('keydown', onLeftKeyPress); 
 } 
  
- 
-
 closeModalBtn.addEventListener('click', closeModal);
 overlay.addEventListener('click', closeModal);
 
@@ -154,6 +121,7 @@ function onEscKeyPress(e) {
         closeModal()
     }
 }
+
  function onRightKeyPress(e) {
     const bigImagesArray = galleryItems.map(image => image.original);
     if (e.code == 'ArrowRight') {
@@ -183,6 +151,29 @@ function onLeftKeyPress(e) {
             return;
           }  
         }
-      }
     }
+}
 
+//  Создание и рендер разметки по массиву данных galleryItems из app.js и предоставленному шаблону.
+// Реализация делегирования на галерее ul.js-gallery и получение url большого изображения.
+// Открытие модального окна по клику на элементе галереи.
+// Подмена значения атрибута src элемента img.lightbox__image.
+// Закрытие модального окна по клику на кнопку button[data-action="close-lightbox"].
+// Очистка значения атрибута src элемента img.lightbox__image.Это необходимо для того, чтобы при следующем открытии модального окна, пока грузится изображение, мы не видели предыдущее.
+// Ссылка на оригинальное изображение должна храниться в data-атрибуте source на элементе img, и указываться в href ссылки (это необходимо для доступности).
+// Закрытие модального окна по клику на div.lightbox__overlay.
+// Закрытие модального окна по нажатию клавиши ESC.
+// Пролистывание изображений галереи в открытом модальном окне клавишами "влево" и "вправо".
+//     <li class="gallery__item">
+//   <a
+//     class="gallery__link"
+//     href="${original}"
+//   >
+//     <img
+//       class="gallery__image"
+//       src="${preview}"
+//       data-source="${original}"
+//       alt="${description}"
+//     />
+//   </a>
+// </li>
