@@ -76,7 +76,7 @@ function createGalleryCardMarkup(galleryItems) {
     <li class="gallery__item">
   <a
     class="gallery__link"
-    href="#"
+    href="${original}"
   >
     <img
       class="gallery__image"
@@ -95,6 +95,7 @@ galleryContainer.insertAdjacentHTML('beforeend', cardMarkup);
 
 galleryContainer.addEventListener('click', onGalleryContainerClick);
 function onGalleryContainerClick(evt) {
+  evt.preventDefault();
   if (!evt.target.classList.contains('gallery__image')) {
     return;
     }
